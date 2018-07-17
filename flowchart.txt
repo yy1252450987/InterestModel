@@ -1,0 +1,12 @@
+1. EDA:
+        原始特征：
+        * 用户特征:
+          user_id
+        * 视频特征:
+          photo_id
+          text_info
+          visual_info
+          face_info
+        * 交互特征:
+2. FE:
+  
