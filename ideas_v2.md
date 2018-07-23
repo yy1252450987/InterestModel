@@ -26,10 +26,17 @@ GBDT importance feature: feature importances:
 click_rate=636, duration_time=306,face_ratio=269, age_weight=122, playing_time_ratio_mean=42, click_count=32, view_count=26, playing_time_mean=15, beauty_weight=2
 
 特征v2:<br>
-部分特征离散化，增强模型的非线性拟合能力：
+face部分特征离散化，增强模型的非线性拟合能力：
 * face_num -> 0(非人物图片), 1（一人）, 2（两人）, >=3（多人）
 * age_weight -> 0-3(婴幼儿)，3-7(学龄前儿童),7-13（小学生）,13-18（初中生）, 18-25（大学生）,25-30（研究生）, 30-（青年）
 * beauty_weight -> 非常漂亮(80-100)，漂亮(60-80)， 一般(40-60)，丑陋(<40)
+
+user部分异常值的处理:
+用户3434的playing_time 出现异常，‘3434	5893764	1	0	0	761119287418	1912441	20’ 将1912441--> 19
+对长尾分布进行处理：
+  ##like_count : if like_count>5 return 5
+  ##follow_count: if follow_count>5 return 5
+
 
 用户每一时间戳上的点击率，序列化；
 视频被展示次数，率。
