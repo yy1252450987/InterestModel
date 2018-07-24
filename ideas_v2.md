@@ -25,11 +25,11 @@ GBDT importance feature: feature importances:
 
 click_rate=636, duration_time=306,face_ratio=269, age_weight=122, playing_time_ratio_mean=42, click_count=32, view_count=26, playing_time_mean=15, beauty_weight=2
 
-visual 信息是否需要处理？为此先试试全部加入对结果的影响，同样以100Wsample 的数据进行训练和验证
-特征v1:每次读入10000,读入5次，训练mlpc(8,8,4,4)， 预测10000，('AUC: ', 0.7112641140019018)<br>
-特征v1+visual(1024维): 每次读入10000,读入五次，mlpc(512，128，32，4)，预测10000, ('AUC: ', 0.6300197353789786)<br> 大概耗时5-6分钟
-visual(1024维)：每次读入10000,读入五次，mlpc(512，128，32，4)，预测10000,<br>
-
+visual 信息是否需要处理？为此先试试全部加入对结果的影响，同样以100Wsample 的数据进行训练和验证 <br>
+特征v1:bacth_size = 1000, iter=200, 训练mlpc(8,4,4)， 预测10000，('AUC: ', 0.708),耗费2-3分钟 <br> 
+特征v1+visual(2048维): bacth_size = 1000,iter=200, mlpc(512，128，32，4)，预测10000, ('AUC: ', 0.6801017663645377)，耗费4-5分钟 <br>
+visual(2048维)：bacth_size = 1000,iter=200, mlpc(256，64，8)，预测10000, ('AUC: ', 0.5826698521131783) <br>
+可见2048维的信息需要稍微处理一下，降到50-200维之内最为合适，因为我们不能屏蔽掉click rate带来的先验效果。
 
 特征v2:<br>
 
